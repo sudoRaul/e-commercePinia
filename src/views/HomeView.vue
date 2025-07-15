@@ -1,7 +1,9 @@
 <script setup>
-import Card from '@/components/Card.vue'
 import ProductCart from '@/components/ProductCart.vue';
 import { onMounted, ref } from 'vue';
+import { useCartStore } from '@/stores/useCartStore';
+
+const cartStore = useCartStore()
 
 const products = ref([])
 
@@ -19,6 +21,14 @@ async function getProducts() {
     }
 }
 
+// Desde el template cuando instanciamos el componente hijo ponemos el emit al cual nos suscribimos
+// y con esta función definimos la lógica a ejecutar
+function addToCart(product){
+    console.log("Producto a añadir al carrito", Object.entries(product))
+    cartStore.addToCart(product)
+    console.log(cartStore.cart)
+}
+
 onMounted(getProducts)
 </script>
 
@@ -27,7 +37,8 @@ onMounted(getProducts)
     <div class="flex flex-wrap gap-10 justify-center items-stretch">
         <div v-for="product in products" :key="product.id" class="flex flex-col justify-between h-full">
             <ProductCart :title="product.title" :price="product.price"
-            :description="product.description" :category="product.category" :imgSource="product.image" :rating="product.rating.rate" />
+            :description="product.description" :category="product.category" :imgSource="product.image" :rating="product.rating.rate"
+            @add-To-Cart="addToCart(product)" />
         </div>
     </div>
     

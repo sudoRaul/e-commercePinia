@@ -1,14 +1,19 @@
 <script setup>
-import { defineProps } from 'vue';
+import { defineProps, defineEmits } from 'vue';
+import AddToCartButton from './AddToCartButton.vue';
 
 defineProps({
     title: String,
     price: Number,
-    description: String,
-    category: String,
-    imgSource: String,
-    rating: Number
+    imgSource: String
 })
+
+// Declaramos el emit que vamos a enviar al componente padre
+const emit = defineEmits(['add-To-Cart'])
+
+function handleAddToCart(){
+    emit('add-To-Cart')
+}
 </script>
 <template>
     <div class="w-64 h-96 flex flex-col justify-between rounded-xl shadow-lg p-4 bg-white">
@@ -21,6 +26,9 @@ defineProps({
         <div class="mt-4">
             <p class="text-center font-semibold line-clamp-2 h-12">{{ title }}</p>
             <p class="text-center font-bold text-green-600 mt-2">{{ price }} €</p>
+        </div>
+        <div class="text-center" @click="handleAddToCart">
+            <AddToCartButton />
         </div>
     </div>
 
