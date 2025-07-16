@@ -1,11 +1,15 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
 import AddToCartButton from './AddToCartButton.vue';
+import RemoveToCartButton from './RemoveToCartButton.vue';
 
 defineProps({
     title: String,
     price: Number,
-    imgSource: String
+    description: String,
+    category: String,
+    imgSource: String,
+    rating: Number
 })
 
 // Declaramos el emit que vamos a enviar al componente padre
@@ -27,8 +31,11 @@ function handleAddToCart(){
             <p class="text-center font-semibold line-clamp-2 h-12">{{ title }}</p>
             <p class="text-center font-bold text-green-600 mt-2">{{ price }} €</p>
         </div>
-        <div class="text-center" @click="handleAddToCart">
+        <div v-if="$route.path === '/'" class="text-center" @click="handleAddToCart">
             <AddToCartButton />
+        </div>
+        <div v-else class="text-center">
+            <RemoveToCartButton />
         </div>
     </div>
 

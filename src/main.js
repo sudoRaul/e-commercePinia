@@ -1,4 +1,4 @@
-import './assets/main.css' // 👈 Esto debe estar presente
+import './assets/main.css' 
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
