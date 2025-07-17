@@ -1,5 +1,5 @@
 <script setup>
-import ProductCart from '@/components/ProductCart.vue';
+import ProductCart from '@/components/Cart/ProductCart.vue';
 import { onMounted, ref } from 'vue';
 import { useCartStore } from '@/stores/useCartStore';
 

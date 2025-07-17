@@ -1,8 +1,8 @@
 <script setup>
 import { useCartStore } from '@/stores/useCartStore';
 
-import Cart from '@/components/Cart.vue'
-import EmptyCart from '@/components/EmptyCart.vue';
+import Cart from '@/components/Cart/Cart.vue'
+import EmptyCart from '@/components/Cart/EmptyCart.vue';
 
 const cartStore = useCartStore()
 

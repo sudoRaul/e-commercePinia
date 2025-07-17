@@ -1,7 +1,7 @@
 <script setup>
 import { defineProps, defineEmits } from 'vue';
-import AddToCartButton from './AddToCartButton.vue';
-import RemoveToCartButton from './RemoveToCartButton.vue';
+import AddToCartButton from './Cart/AddToCartButton.vue';
+import RemoveToCartButton from './Cart/RemoveToCartButton.vue';
 
 defineProps({
     title: String,
