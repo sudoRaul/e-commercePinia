@@ -1,7 +1,9 @@
 <script setup>
-import { defineProps, defineEmits } from 'vue';
-import AddToCartButton from './Cart/AddToCartButton.vue';
-import RemoveToCartButton from './Cart/RemoveToCartButton.vue';
+import { defineProps, defineEmits, computed } from 'vue';
+import AddToCartButton from './AddToCartButton.vue';
+import RemoveToCartButton from './RemoveToCartButton.vue';
+import { useCartStore } from '@/stores/useCartStore';
+
 
 defineProps({
     title: String,
@@ -18,6 +20,7 @@ const emit = defineEmits(['add-To-Cart'])
 function handleAddToCart(){
     emit('add-To-Cart')
 }
+
 </script>
 <template>
     <div class="w-64 h-96 flex flex-col justify-between rounded-xl shadow-lg p-4 bg-white">
@@ -31,6 +34,7 @@ function handleAddToCart(){
             <p class="text-center font-semibold line-clamp-2 h-12">{{ title }}</p>
             <p class="text-center font-bold text-green-600 mt-2">{{ price }} €</p>
         </div>
+        
         <div v-if="$route.path === '/'" class="text-center" @click="handleAddToCart">
             <AddToCartButton />
         </div>
